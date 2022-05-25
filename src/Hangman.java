@@ -29,6 +29,7 @@ public class Hangman {
         return WORD_BANK[RANDOM.nextInt(WORD_BANK.length)];
     }
 
+    //Resets the counters from previous game, selects a new word, clears arrays
     private void newGame(){
         //Reset counters and arrays
         errorCounter = 0;
@@ -42,6 +43,7 @@ public class Hangman {
         }
     }
 
+    //Determines if a guessed letter is in the word, if not error is incremented
     private void guess(String g){
         if(!guessedLetters.contains(g)){
             if(chosenWord.contains(g)){
@@ -57,6 +59,11 @@ public class Hangman {
             }
             guessedLetters.add(g);
         }
+    }
+
+    //True if chosenWordLetters = chosenWord (completed array)
+    public boolean completenessCheck(){
+        return chosenWord.contentEquals(new String(chosenWordLetters));
     }
 
 
