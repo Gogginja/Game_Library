@@ -5,8 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
@@ -18,7 +16,7 @@ public class GamePanel extends JPanel implements ActionListener {
     static final int DELAY = 75;
     final int x[] = new int[GAME_UNITS];
     final int y[] = new int[GAME_UNITS];
-    int bodySquares = 1;
+    int bodySquares = 6;
     int applesEaten;
     int appleX;
     int appleY;
@@ -26,7 +24,6 @@ public class GamePanel extends JPanel implements ActionListener {
     boolean isRunning = false;
     Timer timer;
     Random random;
-    JButton playAgain, quit;
     
 
     /**
@@ -189,23 +186,6 @@ public class GamePanel extends JPanel implements ActionListener {
         FontMetrics metrics = getFontMetrics(g.getFont());
         g.drawString("Game Over",
                 (SCREEN_WIDTH - metrics.stringWidth("Game Over")) / 2, SCREEN_HEIGHT / 2);
-
-       playAgain = new JButton("Play Again");
-       playAgain.setSize(95, 50);
-       playAgain.setLocation(250,340);
-       playAgain.addActionListener(this);
-       playAgain.setBackground(Color.WHITE);
-       playAgain.setBorderPainted(false);
-       this.add(playAgain);
-
-       quit = new JButton("Quit");
-       quit.setSize(95, 50);
-       quit.setLocation(250, 400);
-       quit.addActionListener(this);
-       quit.setBackground(Color.WHITE);
-       quit.setBorderPainted(false);
-       this.add(quit);
-
     }
 
     /**
@@ -220,16 +200,6 @@ public class GamePanel extends JPanel implements ActionListener {
             checkCollisions();
         }
         repaint();
-        //FIXME just opens a new window needs to start fresh
-        if(e.getSource() == playAgain){
-            new GameFrame();
-            new GamePanel();
-        }
-
-        if(e.getSource()== quit){
-            new LaunchPage();
-        }
-
     }
 
     public class myKeyAdapter extends KeyAdapter{
