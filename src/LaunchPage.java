@@ -1,39 +1,50 @@
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LaunchPage implements ActionListener {
+public class LaunchPage extends JFrame implements ActionListener{
     
     
+    //Icons for buttons
+    ImageIcon snakeI = new ImageIcon("src\\icons\\snake.PNG");
+    ImageIcon hangmanI = new ImageIcon("src\\icons\\hangman.PNG");
+    ImageIcon memoryI = new ImageIcon("src\\icons\\memorygame.PNG");
+    ImageIcon tictactoeI = new ImageIcon("src\\icons\\tictactoe.PNG");
+    //Buttons to access games
     JFrame frame = new JFrame();
-    JButton snake = new JButton("Snake");
-    JButton hangman = new JButton("Hangman");
-    JButton memory = new JButton("Memory");
-    JButton tictactoe = new JButton("Tic-Tac-Toe");
+    JButton snake = new JButton(snakeI);
+    JButton hangman = new JButton(hangmanI);
+    JButton memory = new JButton(memoryI);
+    JButton tictactoe = new JButton(tictactoeI);
+
+    GameFrame snakegame;
 
     LaunchPage(){
-        snake.setBounds(100, 100, 200, 40);
+        snake.setBounds(10, 10, 300, 228);
         snake.setFocusable(false);
         snake.addActionListener(this);
-        hangman.setBounds(300, 100, 200, 40);
+        hangman.setBounds(310, 10, 298, 146);
         hangman.setFocusable(false);
         hangman.addActionListener(this);
-        memory.setBounds(300, 200, 200, 40);
+        memory.setBounds(310, 156, 243, 97);
         memory.setFocusable(false);
         memory.addActionListener(this);
-        tictactoe.setBounds(100, 200, 200, 40);
+        tictactoe.setBounds(10, 238, 204, 177);
         tictactoe.setFocusable(false);
         tictactoe.addActionListener(this);
 
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
         frame.add(snake);
         frame.add(hangman);
         frame.add(memory);
         frame.add(tictactoe);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600,600);
+        frame.setSize(700,700);
         frame.setLayout(null);
         frame.setVisible(true);
     }
