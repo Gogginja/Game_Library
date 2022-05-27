@@ -17,6 +17,7 @@ public class BlockBreakerFrame implements ActionListener{
         menuBar.add(exitMenu);
         breaker.setJMenuBar(menuBar);
         library.addActionListener(this);
+
         GamePlay gamePlay = new GamePlay();
         breaker.add(gamePlay);
         breaker.setBounds(10,10,700,620);
