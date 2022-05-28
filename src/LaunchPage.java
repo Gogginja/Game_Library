@@ -41,7 +41,7 @@ public class LaunchPage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==snake){
-           new GameFrame();
+           new SnakePrePlayMenu();
            frame.dispose();
         }
         if(e.getSource() == blockBreaker){
