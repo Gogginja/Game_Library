@@ -39,7 +39,7 @@ public class LaunchPage extends JFrame implements ActionListener{
         tictactoe.setFocusable(false);
         tictactoe.addActionListener(this);
 
-        blockBreaker.setBounds(100, 200, 200, 40);
+        blockBreaker.setBounds(10, 240, 200, 40);
         blockBreaker.setFocusable(false);
         blockBreaker.addActionListener(this);
 
