@@ -24,10 +24,6 @@ public class LaunchPage extends JFrame implements ActionListener{
 
     GameFrame snakegame;
 
-    JButton snake = new JButton("Snake");
-    JButton hangman = new JButton("Hangman");
-    JButton memory = new JButton("Memory");
-    JButton blockBreaker = new JButton("Block-Breaker");
 
 
     LaunchPage(){
@@ -44,16 +40,16 @@ public class LaunchPage extends JFrame implements ActionListener{
         tictactoe.setFocusable(false);
         tictactoe.addActionListener(this);
 
-        blockBreaker.setBounds(10, 240, 200, 40);
-        blockBreaker.setFocusable(false);
-        blockBreaker.addActionListener(this);
+        //blockBreaker.setBounds(10, 240, 200, 40);
+        //blockBreaker.setFocusable(false);
+        //blockBreaker.addActionListener(this);
 
 
         frame.getContentPane().setBackground(Color.DARK_GRAY);
         frame.add(snake);
         frame.add(hangman);
         frame.add(memory);
-        frame.add(blockBreaker);
+        //frame.add(blockBreaker);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700,700);
@@ -67,10 +63,10 @@ public class LaunchPage extends JFrame implements ActionListener{
            new SnakePrePlayMenu();
            frame.dispose();
         }
-        if(e.getSource() == blockBreaker){
+        /*if(e.getSource() == blockBreaker){
             new BlockBreakerFrame();
             frame.dispose();
-        }
+        }*/
     }
     
 }
