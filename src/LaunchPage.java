@@ -21,14 +21,9 @@ public class LaunchPage extends JFrame implements ActionListener{
     JButton hangman = new JButton(hangmanI);
     JButton memory = new JButton(memoryI);
     JButton tictactoe = new JButton(tictactoeI);
+    JButton blockBreaker = new JButton();
 
     GameFrame snakegame;
-
-    JButton snake = new JButton("Snake");
-    JButton hangman = new JButton("Hangman");
-    JButton memory = new JButton("Memory");
-    JButton blockBreaker = new JButton("Block-Breaker");
-
 
     LaunchPage(){
         snake.setBounds(10, 10, 300, 228);
