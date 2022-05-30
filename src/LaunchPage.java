@@ -7,8 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LaunchPage extends JFrame implements ActionListener{
-    
-    
+
+
+
     //Icons for buttons
     ImageIcon snakeI = new ImageIcon("src\\icons\\snake.PNG");
     ImageIcon hangmanI = new ImageIcon("src\\icons\\hangman.PNG");
@@ -22,12 +23,12 @@ public class LaunchPage extends JFrame implements ActionListener{
     JButton memory = new JButton(memoryI);
     JButton tictactoe = new JButton(tictactoeI);
 
-    GameFrame snakegame;
+    //FIXME: Import png for block Breaker
+    JButton blockBreaker = new JButton("");
+    //FIXME: Import png for pong
+    JButton pong = new JButton("");
 
-    JButton snake = new JButton("Snake");
-    JButton hangman = new JButton("Hangman");
-    JButton memory = new JButton("Memory");
-    JButton blockBreaker = new JButton("Block-Breaker");
+    GameFrame snakegame;
 
 
     LaunchPage(){
@@ -70,6 +71,10 @@ public class LaunchPage extends JFrame implements ActionListener{
         if(e.getSource() == blockBreaker){
             new BlockBreakerFrame();
             frame.dispose();
+        }
+        if(e.getSource() == pong){
+            new PongPlayMenu();
+
         }
     }
     
