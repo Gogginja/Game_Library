@@ -66,12 +66,17 @@ public class Hangman {
         return chosenWord.contentEquals(new String(chosenWordLetters));
     }
 
+    //returns the state of the word we are guessing
+    private String displayProcess() {
+        StringBuilder builder = new StringBuilder();
 
+        for (int i = 0; i < chosenWordLetters.length; i++) {
+            builder.append(chosenWordLetters[i]);
 
-
-
-
-
-
-
+            if (i < chosenWordLetters.length - 1) {
+                builder.append(" ");
+            }
+        }
+        return builder.toString();
+    }
 }
