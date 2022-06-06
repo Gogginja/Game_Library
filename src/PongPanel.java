@@ -137,10 +137,6 @@ public class PongPanel extends JPanel implements Runnable{
         public void keyPressed(KeyEvent e){
             paddle1.keyPressed(e);
             paddle2.keyPressed(e);
-
-            if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-                PongPlayMenu play = new PongPlayMenu();
-            }
         }
 
         public void keyReleased(KeyEvent e){

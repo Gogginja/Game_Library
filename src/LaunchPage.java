@@ -23,6 +23,7 @@ public class LaunchPage extends JFrame implements ActionListener{
     JButton tictactoe = new JButton(tictactoeI);
     JButton blockBreaker = new JButton("BlockBreaker");
     JButton pong = new JButton("Pong");
+
     GameFrame snakegame;
 
 
@@ -37,7 +38,7 @@ public class LaunchPage extends JFrame implements ActionListener{
         memory.setBounds(310, 156, 243, 97);
         memory.setFocusable(false);
 
-        tictactoe.setBounds(10, 238, 204, 177);
+        tictactoe.setBounds(10, 360, 204, 177);
         tictactoe.setFocusable(false);
         tictactoe.addActionListener(this);
 
@@ -49,13 +50,13 @@ public class LaunchPage extends JFrame implements ActionListener{
         pong.setFocusable(false);
         pong.addActionListener(this);
 
-
         frame.getContentPane().setBackground(Color.DARK_GRAY);
         frame.add(snake);
         frame.add(hangman);
         frame.add(memory);
         frame.add(blockBreaker);
         frame.add(pong);
+        frame.add(tictactoe);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700,700);
@@ -75,6 +76,10 @@ public class LaunchPage extends JFrame implements ActionListener{
         }
         if(e.getSource() == pong){
             new PongFrame();
+            frame.dispose();
+        }
+        if(e.getSource() == tictactoe){
+            new TicTacToeEngine();
             frame.dispose();
         }
     }

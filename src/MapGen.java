@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class MapGen {
-    public int map[][];
+    public int[][] map;
     public int brickwidth;
     public int brickheight;
     public MapGen(int row, int col){
