@@ -1,5 +1,3 @@
-package MemoryGame;
-
 import javax.swing.*;
 import javax.swing.ImageIcon;
 import java.awt.*;
@@ -8,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MemoryGUI extends JPanel {
+public class MemoryGUI extends JPanel implements ActionListener {
     private JToggleButton selectedCard;
     private JToggleButton b1;
     private JToggleButton b2;
@@ -43,6 +41,7 @@ public class MemoryGUI extends JPanel {
 
             //Game Library Button
             gamelibrary = new JButton("Game Library");
+            gamelibrary.addActionListener(this);
             /*
              * ADD FUNCTIONALITY TO BRING BACK TO GAME LIBRARY HERE
              */
@@ -55,16 +54,16 @@ public class MemoryGUI extends JPanel {
             cardPanel.setVisible(true);
 
             //ImageIcon for cardback
-            cardback = new ImageIcon("/GameMachine/src/MemoryGame/Images/jello2.png");
+            cardback = new ImageIcon("src\\Images\\jello2.png");
             String[] pics = {
-                    "/GameMachine/src/MemoryGame/Images/angela.png",
-                    "/GameMachine/src/MemoryGame/Images/dwight.png",
-                    "/GameMachine/src/MemoryGame/Images/jim.png",
-                    "/GameMachine/src/MemoryGame/Images/kevin.png",
-                    "/GameMachine/src/MemoryGame/Images/michael.png",
-                    "/GameMachine/src/MemoryGame/Images/pam.png",
-                    "/GameMachine/src/MemoryGame/Images/stanley.png",
-                    "/GameMachine/src/MemoryGame/Images/toby.png"
+                    "src\\Images\\angela.png",
+                    "src\\Images\\dwight.png",
+                    "src\\Images\\jim.png",
+                    "src\\Images\\kevin.png",
+                    "src\\Images\\michael.png",
+                    "src\\Images\\pam.png",
+                    "src\\Images\\stanley.png",
+                    "src\\Images\\toby.png"
             };
             ArrayList<ImageIcon> cardface = new ArrayList<ImageIcon>();
 
@@ -107,6 +106,14 @@ public class MemoryGUI extends JPanel {
             frame.setVisible(true);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == gamelibrary){
+            new LaunchPage();
+            frame.dispose();
+        }
+    }
+
     /************************************************
      *
      * Method for taking a turn
@@ -138,7 +145,7 @@ public class MemoryGUI extends JPanel {
             matches++;
             if (this.isGameWon()) {
                 String[] responses = {"Play Again", "Game Library"};
-                ImageIcon icon = new ImageIcon("/Users/laureninman/Downloads/GameMachine/src/MemoryGame/Images/img.png");
+                ImageIcon icon = new ImageIcon("src\\Images\\img.png");
                 int choice = JOptionPane.showOptionDialog(
                         null,
                         "You Win!",
@@ -188,6 +195,8 @@ public class MemoryGUI extends JPanel {
     public void setPlayagain() {
         main(null);
     }
+
+    
 
     public static void main(String[] args) {
         new MemoryGUI();

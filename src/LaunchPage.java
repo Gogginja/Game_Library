@@ -1,6 +1,7 @@
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 import java.awt.*;
 
 import java.awt.event.ActionEvent;
@@ -35,6 +36,7 @@ public class LaunchPage extends JFrame implements ActionListener{
         hangman.addActionListener(this);
         memory.setBounds(310, 156, 243, 97);
         memory.setFocusable(false);
+        memory.addActionListener(this);
 
         tictactoe.setBounds(10, 360, 204, 175);
         tictactoe.setFocusable(false);
@@ -78,6 +80,10 @@ public class LaunchPage extends JFrame implements ActionListener{
         }
         if(e.getSource() == tictactoe){
             new TicTacToeEngine();
+            frame.dispose();
+        }
+        if(e.getSource() == memory){
+            new MemoryGUI();
             frame.dispose();
         }
     }
