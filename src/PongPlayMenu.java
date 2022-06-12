@@ -45,11 +45,10 @@ public class PongPlayMenu extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == start){
-            PongFrame startGame = new PongFrame();
-            Thread game = new Thread(startGame);
-
-            game.start();
             prePlay.dispose();
+            new PongFrame();
+            new PongPanel();
+
         }
 
         if(e.getSource() == exit){
