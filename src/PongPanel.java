@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
@@ -20,6 +22,8 @@ public class PongPanel extends JPanel implements Runnable{
     PongPaddles paddle2;
     Ball ball;
     PongScore score;
+    boolean gameIsOver;
+
 
     PongPanel(){
         newPaddles();
@@ -38,8 +42,7 @@ public class PongPanel extends JPanel implements Runnable{
     public void newBall(){
         random = new Random();
         ball = new Ball((GAME_WIDTH / 2) - (BALL_DIAMETER / 2), random.nextInt(GAME_HEIGHT - BALL_DIAMETER),
-                BALL_DIAMETER, BALL_DIAMETER);
-
+                        BALL_DIAMETER, BALL_DIAMETER);
     }
 
     public void newPaddles(){
@@ -103,14 +106,14 @@ public class PongPanel extends JPanel implements Runnable{
 
         //give score and creates new paddles and ball
         if(ball.x <= 0){
-            score.player2++;
-            newPaddles();
-            newBall();
+                score.player2++;
+                newPaddles();
+                newBall();
         }
         if(ball.x >= GAME_WIDTH - BALL_DIAMETER){
-            score.player1++;
-            newPaddles();
-            newBall();
+                score.player1++;
+                newPaddles();
+                newBall();
         }
     }
 
@@ -131,7 +134,6 @@ public class PongPanel extends JPanel implements Runnable{
             }
         }
     }
-
 
     public class AL extends KeyAdapter{
         public void keyPressed(KeyEvent e){
