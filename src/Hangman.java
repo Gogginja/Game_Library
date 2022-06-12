@@ -79,4 +79,8 @@ public class Hangman {
         }
         return builder.toString();
     }
+
+    public void startGame(){
+        new HangmanFrame();
+    }
 }
