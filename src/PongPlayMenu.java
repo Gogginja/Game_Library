@@ -22,7 +22,7 @@ public class PongPlayMenu extends JPanel implements ActionListener {
     }
 
     private static Component drawImage(){
-        ImageIcon pongImage = new ImageIcon("src\\icons\\pongGame.PNG");
+        ImageIcon pongImage = new ImageIcon("src\\icons\\pongGame.png");
         JLabel myLabel = new JLabel(pongImage);
         myLabel.setSize(600,600);
 
@@ -45,13 +45,15 @@ public class PongPlayMenu extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == start){
-            new PongFrame();
+            PongFrame startGame = new PongFrame();
+            Thread game = new Thread(startGame);
+
+            game.start();
             prePlay.dispose();
         }
 
         if(e.getSource() == exit){
             new LaunchPage();
-            prePlay.dispose();
         }
     }
 }
