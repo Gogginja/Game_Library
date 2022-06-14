@@ -43,8 +43,9 @@ public class HangmanPanel extends JPanel {
 
         guessButton.addActionListener(new ButtonListener());
 
-//        JOptionPane.showMessageDialog(null, "Welcome to Hangman!" +
-//                " Guess one character at a time, get 6 errors and it's Game Over.");
+        JOptionPane.showMessageDialog(null, "Welcome to Hangman! " +
+                "You will be guessing Java Keywords. Guess one alphabetic character at a time, 6 errors and it's " +
+                "game over.");
 
     }
 
@@ -109,8 +110,8 @@ public class HangmanPanel extends JPanel {
                     }
                     //Back to Game Library
                     if (choice == JOptionPane.NO_OPTION) {
-                        //TODO replace with code that returns to the library
-                        System.exit(0);
+                        ((Frame)HangmanPanel.this.getTopLevelAncestor()).dispose();
+                        new LaunchPage();
                     }
                 }
 
@@ -132,8 +133,8 @@ public class HangmanPanel extends JPanel {
                     }
                     //Back to Game Library
                     if (choice == JOptionPane.NO_OPTION) {
-                        //TODO replace with code that returns to the library
-                        System.exit(0);
+                        ((Frame)HangmanPanel.this.getTopLevelAncestor()).dispose();
+                        new LaunchPage();
                     }
                 }
 
