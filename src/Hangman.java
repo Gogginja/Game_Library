@@ -1,11 +1,12 @@
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 public class Hangman {
 
     //Bank of words the computer will choose from
-    public static final String[] WORD_BANK = {}; //TODO: fill with words the computer could pick
+    public static final String[] WORD_BANK = {"TEST"}; //TODO: fill with words the computer could pick
 
     //Random number generator used to select a word
     public static final Random RANDOM = new Random();
@@ -17,20 +18,37 @@ public class Hangman {
     private String chosenWord;
 
     //Characters in the word the player will be guessing for
-    private char[] chosenWordLetters;
+    private static char[] chosenWordLetters;
 
     //Variable to keep track of the player's number of errors
     private int errorCounter;
 
     //Array of characters the user has guessed
-    private ArrayList<String> guessedLetters;
+    private ArrayList<String> guessedLetters = new ArrayList<String>();
+
+    public Hangman(){
+        errorCounter = 0;
+        chosenWord = pickRandomWord();
+        chosenWordLetters = new char[chosenWord.length()];
+        for(int i=0; i < chosenWord.length(); i++){
+            chosenWordLetters[i] = '_';
+        }
+    }
+
+    public int getErrors(){
+        return errorCounter;
+    }
+
+    public String getGuessedLetters(){
+        return String.join(", ", guessedLetters);
+    }
 
     private String pickRandomWord(){
         return WORD_BANK[RANDOM.nextInt(WORD_BANK.length)];
     }
 
     //Resets the counters from previous game, selects a new word, clears arrays
-    private void newGame(){
+    public void newGame(){
         //Reset counters and arrays
         errorCounter = 0;
         guessedLetters.clear();
@@ -44,7 +62,8 @@ public class Hangman {
     }
 
     //Determines if a guessed letter is in the word, if not error is incremented
-    private void guess(String g){
+    public int guess(String g){
+        g = g.toUpperCase();
         if(!guessedLetters.contains(g)){
             if(chosenWord.contains(g)){
                 int i = chosenWord.indexOf(g);
@@ -53,12 +72,16 @@ public class Hangman {
                     chosenWordLetters[i] = g.charAt(0);
                     i = chosenWord.indexOf(g, i+1);
                 }
+                guessedLetters.add(g);
+                return 1;
             }
             else {
+                guessedLetters.add(g);
                 errorCounter++;
+                return 0;
             }
-            guessedLetters.add(g);
         }
+        return 2;
     }
 
     //True if chosenWordLetters = chosenWord (completed array)
@@ -67,7 +90,7 @@ public class Hangman {
     }
 
     //returns the state of the word we are guessing
-    private String displayProcess() {
+    public String displayProcess() {
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < chosenWordLetters.length; i++) {

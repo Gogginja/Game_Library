@@ -86,6 +86,10 @@ public class LaunchPage extends JFrame implements ActionListener{
             new MemoryGUI();
             frame.dispose();
         }
+        if(e.getSource() == hangman){
+            new HangmanFrame();
+            frame.dispose();
+        }
     }
     
 }
