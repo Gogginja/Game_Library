@@ -25,7 +25,7 @@ public class Hangman {
 
     //Array of characters the user has guessed
     private ArrayList<String> guessedLetters = new ArrayList<String>();
-
+    
     public Hangman(){
         errorCounter = 0;
         chosenWord = pickRandomWord();
@@ -41,6 +41,10 @@ public class Hangman {
 
     public String getGuessedLetters(){
         return String.join(", ", guessedLetters);
+    }
+
+    public String getChosenWord(){
+        return chosenWord;
     }
 
     private String pickRandomWord(){
