@@ -25,7 +25,45 @@ public class Hangman {
 
     //Array of characters the user has guessed
     private ArrayList<String> guessedLetters = new ArrayList<String>();
-    
+
+
+    public String getGuessedLetters(){
+        return String.join(", ", guessedLetters);
+    }
+
+    public String getChosenWord(){
+        return chosenWord;
+    }
+
+    public int getNUM_ERRORS() {
+        return NUM_ERRORS;
+    }
+
+    public static char[] getChosenWordLetters() {
+        return chosenWordLetters;
+    }
+
+    public int getErrorCounter() {
+        return errorCounter;
+    }
+
+    public void setChosenWord(String chosenWord) {
+        this.chosenWord = chosenWord;
+    }
+
+    public static void setChosenWordLetters(char[] chosenWordLetters) {
+        Hangman.chosenWordLetters = chosenWordLetters;
+    }
+
+    public void setErrorCounter(int errorCounter) {
+        this.errorCounter = errorCounter;
+    }
+
+    public void setGuessedLetters(ArrayList<String> guessedLetters) {
+        this.guessedLetters = guessedLetters;
+    }
+
+
     public Hangman(){
         errorCounter = 0;
         chosenWord = pickRandomWord();
@@ -35,17 +73,6 @@ public class Hangman {
         }
     }
 
-    public int getErrors(){
-        return errorCounter;
-    }
-
-    public String getGuessedLetters(){
-        return String.join(", ", guessedLetters);
-    }
-
-    public String getChosenWord(){
-        return chosenWord;
-    }
 
     private String pickRandomWord(){
         return WORD_BANK[RANDOM.nextInt(WORD_BANK.length)];
@@ -67,6 +94,9 @@ public class Hangman {
 
     //Determines if a guessed letter is in the word, if not error is incremented
     public int guess(String g){
+        if(g.length() != 1){
+            throw new IllegalArgumentException();
+        }
         g = g.toUpperCase();
         if(!guessedLetters.contains(g)){
             if(chosenWord.contains(g)){
