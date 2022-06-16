@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GamePlay extends JPanel implements KeyListener, ActionListener {
+@SuppressWarnings("ALL")
+public class BlockBreakerGamePlay extends JPanel implements KeyListener, ActionListener {
 
     private boolean isRunning = false;
     private int score = 0;
@@ -19,10 +20,14 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
     private int ballXdir = -5;
     private int ballYdir = -4;
 
-    private MapGen map;
+    private BlockBreakerMapGen map;
 
-    public GamePlay(){
-        map = new MapGen(3, 7);
+    /**
+     * Constructor to play BlockBreaker
+     */
+
+    public BlockBreakerGamePlay(){
+        map = new BlockBreakerMapGen(3, 7);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -30,6 +35,10 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
         time.start();
     }
 
+    /**
+     * Paints the games graphics
+     * @param g  the <code>Graphics</code> context in which to paint
+     */
     public void paint(Graphics g){
         g.setColor(Color.GRAY);
         g.fillRect(1,1,692,592);
@@ -79,7 +88,10 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
     }
 
 
-
+    /**
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         time.start();
@@ -131,6 +143,10 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
         repaint();
     }
 
+    /**
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -141,6 +157,10 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
     }
 
+    /**
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
@@ -167,22 +187,26 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
                 playerX = 310;
                 score = 0;
                 toatlBricks = 21;
-                map = new MapGen(3, 7);
+                map = new BlockBreakerMapGen(3, 7);
 
                 repaint();
             }
         }
     }
 
+    /**
+     * Method to move paddle right
+     */
     public void moveRight(){
         isRunning = true;
         playerX+= 20;
     }
 
+    /**
+     * Method to move paddle left
+     */
     public void moveLeft(){
         isRunning = true;
         playerX -= 20;
     }
-
-
 }

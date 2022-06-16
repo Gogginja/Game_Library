@@ -8,6 +8,9 @@ public class PongPlayMenu extends JPanel implements ActionListener {
     static JButton start = new JButton("Start");
     static JButton exit = new JButton("Exit");
 
+    /**
+     * Pre-play menu for game
+     */
     public PongPlayMenu(){
         prePlay = new JFrame("Pong-Game");
         prePlay.add(drawImage());
@@ -21,6 +24,10 @@ public class PongPlayMenu extends JPanel implements ActionListener {
         prePlay.setVisible(true);
     }
 
+    /**
+     * Creates the background for the GUI window
+     * @return the component
+     */
     private static Component drawImage(){
         ImageIcon pongImage = new ImageIcon("src\\icons\\pongGame.png");
         JLabel myLabel = new JLabel(pongImage);
@@ -42,6 +49,10 @@ public class PongPlayMenu extends JPanel implements ActionListener {
 
     }
 
+    /**
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == start){

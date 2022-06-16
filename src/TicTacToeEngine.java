@@ -15,7 +15,9 @@ public class TicTacToeEngine implements ActionListener {
     JButton[] buttons = new JButton[9];
     boolean player1_turn;
 
-
+    /**
+     * Constructor for Tic-Tac-Toe
+     */
     TicTacToeEngine(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 800);
@@ -52,6 +54,10 @@ public class TicTacToeEngine implements ActionListener {
 
     }
 
+    /**
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -79,6 +85,9 @@ public class TicTacToeEngine implements ActionListener {
         }
     }
 
+    /**
+     * Sets the first turn randomly
+     */
     public void firstTurn(){
 
         if(random.nextInt(2) == 0){
@@ -90,6 +99,10 @@ public class TicTacToeEngine implements ActionListener {
         }
 
     }
+
+    /**
+     * Checks the board for a winner
+     */
 
     public void check(){
         //check X
@@ -178,6 +191,14 @@ public class TicTacToeEngine implements ActionListener {
 
     }
 
+    /**
+     *
+     * @param a location 1
+     * @param b location 2
+     * @param c location 3
+     *          If all locations are in a line or diag then X wins
+     */
+
     public void xWins(int a, int b, int c){
         buttons[a].setBackground(Color.GREEN);
 
@@ -191,6 +212,14 @@ public class TicTacToeEngine implements ActionListener {
         textField.setText("X WINS!!");
 
     }
+
+    /**
+     *
+     * @param a location 1
+     * @param b location 2
+     * @param c location 3
+     *          If all locations are in a line or diag then O wins
+     */
 
     public void oWins(int a, int b, int c){
 

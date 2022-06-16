@@ -21,6 +21,9 @@ public class PongPanel extends JPanel implements Runnable{
     PongBall ball;
     PongScore score;
 
+    /**
+     * Constructor to play game
+     */
     PongPanel(){
         newPaddles();
         newBall();
@@ -35,6 +38,9 @@ public class PongPanel extends JPanel implements Runnable{
 
     }
 
+    /**
+     * spawns new ball
+     */
     public void newBall(){
         random = new Random();
         ball = new PongBall((GAME_WIDTH / 2) - (BALL_DIAMETER / 2), random.nextInt(GAME_HEIGHT - BALL_DIAMETER),
@@ -42,6 +48,9 @@ public class PongPanel extends JPanel implements Runnable{
 
     }
 
+    /**
+     * spawns new paddles
+     */
     public void newPaddles(){
         paddle1 = new PongPaddles(0, (GAME_HEIGHT / 2) - (PADDLE_HEIGHT / 2),
                 PADDLE_WIDTH, PADDLE_HEIGHT, 1);
@@ -50,6 +59,10 @@ public class PongPanel extends JPanel implements Runnable{
 
     }
 
+    /**
+     * creates ghraphics for the game
+     * @param g  the <code>Graphics</code> context in which to paint
+     */
     public void paint(Graphics g){
         image = createImage(getWidth(), getHeight());
         graphics = image.getGraphics();
@@ -57,6 +70,10 @@ public class PongPanel extends JPanel implements Runnable{
         g.drawImage(image, 0,0, this);
     }
 
+    /**
+     *
+     * @param g draws the games graphics
+     */
     public void draw(Graphics g){
         paddle1.draw(g);
         paddle2.draw(g);
@@ -65,6 +82,9 @@ public class PongPanel extends JPanel implements Runnable{
 
     }
 
+    /**
+     * Moves the players paddles
+     */
     public void move(){
         paddle1.move();
         paddle2.move();
@@ -72,6 +92,9 @@ public class PongPanel extends JPanel implements Runnable{
 
     }
 
+    /**
+     * Checks to see if ball hits paddle and then bounces off
+     */
     public void checkCollision(){
         //bounce ball
         if(ball.y <= 0)
@@ -114,26 +137,35 @@ public class PongPanel extends JPanel implements Runnable{
         }
     }
 
+    /**
+     * Runs the game with a timer function
+     */
     public void run(){
         long lastTime = System.nanoTime();
         double amountOfTicks = 60;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
-        while(true){
+        do {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
-            if(delta >= 1){
+            if (delta >= 1) {
                 move();
                 checkCollision();
                 repaint();
                 delta--;
             }
-        }
+        } while (true);
     }
 
-
+    /**
+     * Integrated class for key actions
+     */
     public class AL extends KeyAdapter{
+        /**
+         *
+         * @param e the event to be processed
+         */
         public void keyPressed(KeyEvent e){
             paddle1.keyPressed(e);
             paddle2.keyPressed(e);
@@ -143,6 +175,10 @@ public class PongPanel extends JPanel implements Runnable{
             }
         }
 
+        /**
+         *
+         * @param e the event to be processed
+         */
         public void keyReleased(KeyEvent e){
             paddle1.keyReleased(e);
             paddle2.keyReleased(e);

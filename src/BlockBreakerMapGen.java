@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public class MapGen {
+public class BlockBreakerMapGen {
     public int[][] map;
     public int brickwidth;
     public int brickheight;
-    public MapGen(int row, int col){
+    public BlockBreakerMapGen(int row, int col){
         map = new int[row][col];
         for(int i = 0; i < map.length; i++){
             for(int j = 0; j < map[0].length;j++){

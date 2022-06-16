@@ -7,6 +7,10 @@ public class BlockBreakerFrame implements ActionListener{
     JMenuBar menuBar;
     JMenu exitMenu;
     JMenuItem library;
+
+    /**
+     * constructor to build the frame
+     */
     BlockBreakerFrame(){
         menuBar = new JMenuBar();
         exitMenu = new JMenu("Exit");
@@ -18,7 +22,7 @@ public class BlockBreakerFrame implements ActionListener{
         breaker.setJMenuBar(menuBar);
         library.addActionListener(this);
 
-        GamePlay gamePlay = new GamePlay();
+        BlockBreakerGamePlay gamePlay = new BlockBreakerGamePlay();
         breaker.add(gamePlay);
         breaker.setBounds(10,10,700,620);
         breaker.setTitle("BlockBreaker Game");
@@ -29,6 +33,10 @@ public class BlockBreakerFrame implements ActionListener{
 
     }
 
+    /**
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == library){

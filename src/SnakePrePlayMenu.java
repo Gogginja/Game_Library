@@ -49,8 +49,8 @@ public class SnakePrePlayMenu extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == start){
-            new GameFrame();
-            new GamePanel();
+            new SnakeGameFrame();
+            new SnakeGamePanel();
             prePlay.dispose();
         }
 
