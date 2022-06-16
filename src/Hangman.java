@@ -10,40 +10,55 @@ import java.util.Random;
  **********************************************************************/
 public class Hangman {
 
-    /** Bank of words the computer will choose from */
+    /**
+     * Bank of words the computer will choose from
+     */
     public static final String[] WORD_BANK = {"TEST"}; //TODO: fill with words the computer could pick
 
-    /** Random number generator used to select a word */
+    /**
+     * Random number generator used to select a word
+     */
     public static final Random RANDOM = new Random();
 
-    /** Number of errors allowed */
+    /**
+     * Number of errors allowed
+     */
     private final int NUM_ERRORS = 6;
 
-    /** Word the player will be guessing for */
+    /**
+     * Word the player will be guessing for
+     */
     private String chosenWord;
 
-    /** Characters in the word the player will be guessing for */
+    /**
+     * Characters in the word the player will be guessing for
+     */
     private static char[] chosenWordLetters;
 
-    /** Variable to keep track of the player's number of errors */
+    /**
+     * Variable to keep track of the player's number of errors
+     */
     private int errorCounter;
 
-    /** Array of characters the user has guessed */
+    /**
+     * Array of characters the user has guessed
+     */
     private ArrayList<String> guessedLetters = new ArrayList<String>();
 
     /**********************************************************************
      * Getter method that returns the letters the player has guessed.
      * @return the letters the player guessed as a string
      **********************************************************************/
-    public String getGuessedLetters(){
+    public String getGuessedLetters() {
         return String.join(", ", guessedLetters);
     }
+
 
     /**********************************************************************
      * Getter method that returns the word the player is trying to guess.
      * @return the word the player is trying to guess
      **********************************************************************/
-    public String getChosenWord(){
+    public String getChosenWord() {
         return chosenWord;
     }
 
@@ -78,6 +93,11 @@ public class Hangman {
      **********************************************************************/
     public void setChosenWord(String chosenWord) {
         this.chosenWord = chosenWord;
+        chosenWordLetters = new char[chosenWord.length()];
+        for (int i = 0; i < chosenWord.length(); i++) {
+            chosenWordLetters[i] = '_';
+        }
+        guessedLetters.clear();
     }
 
     /**********************************************************************
@@ -109,19 +129,20 @@ public class Hangman {
     /**********************************************************************
      * Constructor that initializes the game upon first launching.
      **********************************************************************/
-    public Hangman(){
+    public Hangman() {
         errorCounter = 0;
         chosenWord = pickRandomWord();
         chosenWordLetters = new char[chosenWord.length()];
-        for(int i=0; i < chosenWord.length(); i++){
+        for (int i = 0; i < chosenWord.length(); i++) {
             chosenWordLetters[i] = '_';
         }
     }
 
     /**********************************************************************
      * Method to select a random word from the WORD_BANK.
+     * @return The random word selected from WORD_BANK
      **********************************************************************/
-    private String pickRandomWord(){
+    private String pickRandomWord() {
         return WORD_BANK[RANDOM.nextInt(WORD_BANK.length)];
     }
 
@@ -129,7 +150,7 @@ public class Hangman {
      * Method to reset the counters from previous game,
      * selects a new word, clears arrays.
      **********************************************************************/
-    public void newGame(){
+    public void newGame() {
         //Reset counters and arrays
         errorCounter = 0;
         guessedLetters.clear();
@@ -137,51 +158,62 @@ public class Hangman {
         chosenWord = pickRandomWord();
         //Set up the blanks for chosen word
         chosenWordLetters = new char[chosenWord.length()];
-        for(int i=0; i < chosenWord.length(); i++){
+        for (int i = 0; i < chosenWord.length(); i++) {
             chosenWordLetters[i] = '_';
         }
     }
 
-    //Determines if a guessed letter is in the word, if not error is incremented
     /**********************************************************************
      * Method to determine if a guessed letter is in the word,
      * if not error is incremented. If the input is not one letter, throws
      * error.
      * @param g Player's one character guess
      * @throws IllegalArgumentException when the input is not a single
-     * character. Non-alphabetical characters are handled in HangmanPanel
+     * alphabetic character
+     * @return 0 if guess is not part of the word. 1 if guess is part
+     * of the word. 2 if guess has been guessed already.
      **********************************************************************/
-    public int guess(String g){
-        if(g.length() != 1){
+    public int guess(String g) {
+        if (g.length() != 1) {
             throw new IllegalArgumentException();
         }
-        g = g.toUpperCase();
-        if(!guessedLetters.contains(g)){
-            if(chosenWord.contains(g)){
-                int i = chosenWord.indexOf(g);
+        if (!g.matches("[a-zA-Z]+")) {
+            throw new IllegalArgumentException();
+        } else {
+            g = g.toUpperCase();
+            if (!guessedLetters.contains(g)) {
+                if (chosenWord.contains(g)) {
+                    int i = chosenWord.indexOf(g);
 
-                while(i >= 0){
-                    chosenWordLetters[i] = g.charAt(0);
-                    i = chosenWord.indexOf(g, i+1);
+                    while (i >= 0) {
+                        chosenWordLetters[i] = g.charAt(0);
+                        i = chosenWord.indexOf(g, i + 1);
+                    }
+                    guessedLetters.add(g);
+                    return 1;
+                } else {
+                    guessedLetters.add(g);
+                    errorCounter++;
+                    return 0;
                 }
-                guessedLetters.add(g);
-                return 1;
             }
-            else {
-                guessedLetters.add(g);
-                errorCounter++;
-                return 0;
-            }
+            return 2;
         }
-        return 2;
     }
 
-    //True if chosenWordLetters = chosenWord (completed array)
-    public boolean completenessCheck(){
+    /**********************************************************************
+     * Method to reset the counters from previous game,
+     * selects a new word, clears arrays.
+     * @return True if the word has been guessed, false otherwise
+     **********************************************************************/
+    public boolean completenessCheck() {
         return chosenWord.contentEquals(new String(chosenWordLetters));
     }
 
-    //returns the state of the word we are guessing
+    /**********************************************************************
+     * Method to display the progress of the word the player is guessing.
+     * @return The progress of the word the player is guessing
+     **********************************************************************/
     public String displayProcess() {
         StringBuilder builder = new StringBuilder();
 
@@ -195,7 +227,10 @@ public class Hangman {
         return builder.toString();
     }
 
-    public void startGame(){
+    /**********************************************************************
+     * Method to start a game and open the GUI.
+     **********************************************************************/
+    public void startGame() {
         new HangmanFrame();
     }
 }

@@ -11,7 +11,7 @@ public class HangmanPanel extends JPanel {
     private JButton guessButton;
     private JTextField guessField;
 
-    public HangmanPanel(){
+    public HangmanPanel() {
 
         game = new Hangman();
 
@@ -49,7 +49,7 @@ public class HangmanPanel extends JPanel {
 
     }
 
-    private void newGame(){
+    private void newGame() {
         game.newGame();
         lblProgress.setText(game.displayProcess());
         String errors = String.valueOf(game.getErrorCounter());
@@ -59,86 +59,79 @@ public class HangmanPanel extends JPanel {
     }
 
 
-
-    private class ButtonListener implements ActionListener{
+    private class ButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
 
-            if(event.getSource() == guessButton){
-                if(guessField.getText().matches("[a-zA-Z]+")){
-                    if(guessField.getText().length() == 1) {
-                        switch (game.guess(guessField.getText())) {
-                            case (0):
-                                JOptionPane.showMessageDialog(null, "Incorrect!");
-                                break;
-                            case (1):
-                                JOptionPane.showMessageDialog(null, "Correct");
-                                break;
-                            case (2):
-                                JOptionPane.showMessageDialog(null, "You already guessed this letter!");
-                                break;
-                        }
+            if (event.getSource() == guessButton) {
+                try {
+                    switch (game.guess(guessField.getText())) {
+                        case (0):
+                            JOptionPane.showMessageDialog(null, "Incorrect!");
+                            break;
+                        case (1):
+                            JOptionPane.showMessageDialog(null, "Correct");
+                            break;
+                        case (2):
+                            JOptionPane.showMessageDialog(null, "You already guessed this letter!");
+                            break;
                     }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Please enter only ONE character.");
-                    }
+                } catch (IllegalArgumentException e) {
+                    JOptionPane.showMessageDialog(null, "Please enter ONE ALPHABETIC character!");
                 }
-                else{
-                    JOptionPane.showMessageDialog(null, "Please enter an alphabetical character.");
-                }
-
-                lblProgress.setText(game.displayProcess());
-                String errors = String.valueOf(game.getErrorCounter());
-                lblErrors.setText(errors);
-                lblGuessed.setText(game.getGuessedLetters());
-
-                if (game.completenessCheck()) {
-                    String[] responses = {"Play Again", "Game Library"};
-                    ImageIcon icon = new ImageIcon("src\\Images\\hmwin.JPEG");
-                    int choice = JOptionPane.showOptionDialog(
-                            null,
-                            "You Win!",
-                            "Game Over",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.INFORMATION_MESSAGE,
-                            icon,
-                            responses,
-                            0);
-                    //Play Again
-                    if (choice == JOptionPane.YES_OPTION) {
-                        newGame();
-                    }
-                    //Back to Game Library
-                    if (choice == JOptionPane.NO_OPTION) {
-                        ((Frame)HangmanPanel.this.getTopLevelAncestor()).dispose();
-                        new LaunchPage();
-                    }
-                }
-
-                if (game.getErrorCounter() == 6) {
-                    String[] responses = {"Play Again", "Game Library"};
-                    ImageIcon icon = new ImageIcon("src\\Images\\hmlose.JPEG");
-                    int choice = JOptionPane.showOptionDialog(
-                            null,
-                            "You Lose!",
-                            "Game Over",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.INFORMATION_MESSAGE,
-                            icon,
-                            responses,
-                            0);
-                    //Play Again
-                    if (choice == JOptionPane.YES_OPTION) {
-                        newGame();
-                    }
-                    //Back to Game Library
-                    if (choice == JOptionPane.NO_OPTION) {
-                        ((Frame)HangmanPanel.this.getTopLevelAncestor()).dispose();
-                        new LaunchPage();
-                    }
-                }
-
             }
+
+            lblProgress.setText(game.displayProcess());
+            String errors = String.valueOf(game.getErrorCounter());
+            lblErrors.setText(errors);
+            lblGuessed.setText(game.getGuessedLetters());
+
+            if (game.completenessCheck()) {
+                String[] responses = {"Play Again", "Game Library"};
+                ImageIcon icon = new ImageIcon("src//Images//hmwin.PNG");
+                int choice = JOptionPane.showOptionDialog(
+                        null,
+                        "You Win!",
+                        "Game Over",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        icon,
+                        responses,
+                        0);
+                //Play Again
+                if (choice == JOptionPane.YES_OPTION) {
+                    newGame();
+                }
+                //Back to Game Library
+                if (choice == JOptionPane.NO_OPTION) {
+                    ((Frame) HangmanPanel.this.getTopLevelAncestor()).dispose();
+                    new LaunchPage();
+                }
+            }
+
+            if (game.getErrorCounter() == 6) {
+                String[] responses = {"Play Again", "Game Library"};
+                ImageIcon icon = new ImageIcon("src//Images//hmlose.JPEG");
+                int choice = JOptionPane.showOptionDialog(
+                        null,
+                        "You Lose!",
+                        "Game Over",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        icon,
+                        responses,
+                        0);
+                //Play Again
+                if (choice == JOptionPane.YES_OPTION) {
+                    newGame();
+                }
+                //Back to Game Library
+                if (choice == JOptionPane.NO_OPTION) {
+                    ((Frame) HangmanPanel.this.getTopLevelAncestor()).dispose();
+                    new LaunchPage();
+                }
+            }
+
         }
     }
 }
