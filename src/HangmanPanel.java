@@ -31,7 +31,7 @@ public class HangmanPanel extends JPanel {
 
         add(new JLabel("Errors: "));
         lblErrors = new JLabel();
-        String errors = String.valueOf(game.getErrors());
+        String errors = String.valueOf(game.getErrorCounter());
         lblErrors.setText(errors);
         add(lblErrors);
 
@@ -52,7 +52,7 @@ public class HangmanPanel extends JPanel {
     private void newGame(){
         game.newGame();
         lblProgress.setText(game.displayProcess());
-        String errors = String.valueOf(game.getErrors());
+        String errors = String.valueOf(game.getErrorCounter());
         lblErrors.setText(errors);
         lblGuessed.setText(game.getGuessedLetters());
         guessField.setText("Enter a letter");
@@ -88,7 +88,7 @@ public class HangmanPanel extends JPanel {
                 }
 
                 lblProgress.setText(game.displayProcess());
-                String errors = String.valueOf(game.getErrors());
+                String errors = String.valueOf(game.getErrorCounter());
                 lblErrors.setText(errors);
                 lblGuessed.setText(game.getGuessedLetters());
 
@@ -115,7 +115,7 @@ public class HangmanPanel extends JPanel {
                     }
                 }
 
-                if (game.getErrors() == 6) {
+                if (game.getErrorCounter() == 6) {
                     String[] responses = {"Play Again", "Game Library"};
                     ImageIcon icon = new ImageIcon("src\\Images\\hmlose.JPEG");
                     int choice = JOptionPane.showOptionDialog(

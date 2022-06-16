@@ -3,67 +3,112 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 
+/**********************************************************************
+ * Logic and gameplay for the Hangman Game.
+ * @author Lucas Myers
+ * @version Spring 2022
+ **********************************************************************/
 public class Hangman {
 
-    //Bank of words the computer will choose from
+    /** Bank of words the computer will choose from */
     public static final String[] WORD_BANK = {"TEST"}; //TODO: fill with words the computer could pick
 
-    //Random number generator used to select a word
+    /** Random number generator used to select a word */
     public static final Random RANDOM = new Random();
 
-    //Number of errors allowed
+    /** Number of errors allowed */
     private final int NUM_ERRORS = 6;
 
-    //Word the player will be guessing for
+    /** Word the player will be guessing for */
     private String chosenWord;
 
-    //Characters in the word the player will be guessing for
+    /** Characters in the word the player will be guessing for */
     private static char[] chosenWordLetters;
 
-    //Variable to keep track of the player's number of errors
+    /** Variable to keep track of the player's number of errors */
     private int errorCounter;
 
-    //Array of characters the user has guessed
+    /** Array of characters the user has guessed */
     private ArrayList<String> guessedLetters = new ArrayList<String>();
 
-
+    /**********************************************************************
+     * Getter method that returns the letters the player has guessed.
+     * @return the letters the player guessed as a string
+     **********************************************************************/
     public String getGuessedLetters(){
         return String.join(", ", guessedLetters);
     }
 
+    /**********************************************************************
+     * Getter method that returns the word the player is trying to guess.
+     * @return the word the player is trying to guess
+     **********************************************************************/
     public String getChosenWord(){
         return chosenWord;
     }
 
+    /**********************************************************************
+     * Getter method that returns the maximum number of errors allowed.
+     * @return the maximum number of errors allowed
+     **********************************************************************/
     public int getNUM_ERRORS() {
         return NUM_ERRORS;
     }
 
+    /**********************************************************************
+     * Getter method that returns the letters of the word the player is
+     * guessing for.
+     * @return the letters of the word the player is guessing
+     **********************************************************************/
     public static char[] getChosenWordLetters() {
         return chosenWordLetters;
     }
 
+    /**********************************************************************
+     * Getter method that returns the current number of errors.
+     * @return the current number of errors
+     **********************************************************************/
     public int getErrorCounter() {
         return errorCounter;
     }
 
+    /**********************************************************************
+     * Setter method that sets the word the player is guessing for.
+     * @param chosenWord The word the player is guessing for
+     **********************************************************************/
     public void setChosenWord(String chosenWord) {
         this.chosenWord = chosenWord;
     }
 
+    /**********************************************************************
+     * Setter method that sets letters of the word the player is guessing.
+     * @param chosenWordLetters The letters of the word the player is
+     *                          guessing for
+     **********************************************************************/
     public static void setChosenWordLetters(char[] chosenWordLetters) {
         Hangman.chosenWordLetters = chosenWordLetters;
     }
 
+    /**********************************************************************
+     * Setter method that sets the current number of errors.
+     * @param errorCounter The current number of errors
+     **********************************************************************/
     public void setErrorCounter(int errorCounter) {
         this.errorCounter = errorCounter;
     }
 
+    /**********************************************************************
+     * Setter method that sets the letters the player has already guessed.
+     * @param guessedLetters The letters the player has already guessed
+     **********************************************************************/
     public void setGuessedLetters(ArrayList<String> guessedLetters) {
         this.guessedLetters = guessedLetters;
     }
 
 
+    /**********************************************************************
+     * Constructor that initializes the game upon first launching.
+     **********************************************************************/
     public Hangman(){
         errorCounter = 0;
         chosenWord = pickRandomWord();
@@ -73,12 +118,17 @@ public class Hangman {
         }
     }
 
-
+    /**********************************************************************
+     * Method to select a random word from the WORD_BANK.
+     **********************************************************************/
     private String pickRandomWord(){
         return WORD_BANK[RANDOM.nextInt(WORD_BANK.length)];
     }
 
-    //Resets the counters from previous game, selects a new word, clears arrays
+    /**********************************************************************
+     * Method to reset the counters from previous game,
+     * selects a new word, clears arrays.
+     **********************************************************************/
     public void newGame(){
         //Reset counters and arrays
         errorCounter = 0;
@@ -93,6 +143,14 @@ public class Hangman {
     }
 
     //Determines if a guessed letter is in the word, if not error is incremented
+    /**********************************************************************
+     * Method to determine if a guessed letter is in the word,
+     * if not error is incremented. If the input is not one letter, throws
+     * error.
+     * @param g Player's one character guess
+     * @throws IllegalArgumentException when the input is not a single
+     * character. Non-alphabetical characters are handled in HangmanPanel
+     **********************************************************************/
     public int guess(String g){
         if(g.length() != 1){
             throw new IllegalArgumentException();
