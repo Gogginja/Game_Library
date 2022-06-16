@@ -4,8 +4,16 @@ import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
+/**********************************************************************
+ * JUnit tests for hangman.
+ * @author Lucas Myers
+ * @version Spring 2022
+ **********************************************************************/
 public class TestHangman {
 
+    /**********************************************************************
+     * Tests the constructor, ensures correct initial values.
+     **********************************************************************/
     @Test
     public void testConstructor(){
         Hangman game = new Hangman();
@@ -14,6 +22,10 @@ public class TestHangman {
         assertTrue(Arrays.asList(Hangman.WORD_BANK).contains(game.getChosenWord()));
     }
 
+    /**********************************************************************
+     * Tests the newGame method. Ensures correct values after starting
+     * a new game.
+     **********************************************************************/
     @Test
     public void testNewGame(){
         Hangman game = new Hangman();
@@ -23,6 +35,9 @@ public class TestHangman {
         assertTrue(Arrays.asList(Hangman.WORD_BANK).contains(game.getChosenWord()));
     }
 
+    /**********************************************************************
+     * Tests the guess method for a correct guess.
+     **********************************************************************/
     @Test
     public void testValidGuess(){
         Hangman game = new Hangman();
@@ -33,6 +48,9 @@ public class TestHangman {
         assertEquals(game.displayProcess(), "T _ _ T");
     }
 
+    /**********************************************************************
+     * Tests the guess method for an incorrect guess.
+     **********************************************************************/
     @Test
     public void testWrongGuess(){
         Hangman game = new Hangman();
@@ -43,6 +61,9 @@ public class TestHangman {
         assertEquals(game.displayProcess(), "_ _ _ _");
     }
 
+    /**********************************************************************
+     * Tests the guess method for a guess that has already been tried.
+     **********************************************************************/
     @Test
     public void testAlreadyGuess(){
         Hangman game = new Hangman();
@@ -54,6 +75,10 @@ public class TestHangman {
         assertEquals(game.displayProcess(), "_ _ S _");
     }
 
+    /**********************************************************************
+     * Tests the guess method for an invalid guess - more than one
+     * character.
+     **********************************************************************/
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidGuess1(){
         Hangman game = new Hangman();
@@ -61,6 +86,9 @@ public class TestHangman {
         game.guess("test");
     }
 
+    /**********************************************************************
+     * Tests the guess method for an invalid guess - numerical character.
+     **********************************************************************/
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidGuess2(){
         Hangman game = new Hangman();
@@ -68,6 +96,9 @@ public class TestHangman {
         game.guess("7");
     }
 
+    /**********************************************************************
+     * Tests the guess method for an invalid guess - punctuation.
+     **********************************************************************/
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidGuess3(){
         Hangman game = new Hangman();
@@ -75,6 +106,9 @@ public class TestHangman {
         game.guess(".");
     }
 
+    /**********************************************************************
+     * Tests the completenessCheck method when the word has been completed.
+     **********************************************************************/
     @Test
     public void testComplete(){
         Hangman game = new Hangman();
@@ -85,6 +119,9 @@ public class TestHangman {
         assertTrue(game.completenessCheck());
     }
 
+    /**********************************************************************
+     * Tests the completenessCheck method when the word is incomplete.
+     **********************************************************************/
     @Test
     public void testIncomplete(){
         Hangman game = new Hangman();
@@ -94,6 +131,10 @@ public class TestHangman {
         assertFalse(game.completenessCheck());
     }
 
+    /**********************************************************************
+     * Tests the displayProcess method by ensuring the word is updated as
+     * the player guesses correct letters.
+     **********************************************************************/
     @Test
     public void testDisplayProcess(){
         Hangman game = new Hangman();

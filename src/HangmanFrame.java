@@ -2,7 +2,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/**********************************************************************
+ * JFrame for Hangman
+ * @author Lucas Myers
+ * @version Spring 2022
+ **********************************************************************/
 public class HangmanFrame extends JFrame implements ActionListener {
 
     JFrame hangFrame = new JFrame();
@@ -12,6 +16,9 @@ public class HangmanFrame extends JFrame implements ActionListener {
     JMenuItem library;
     JMenuItem playAgain;
 
+    /**********************************************************************
+     * Constructor that adds menu items and launches the hangman panel.
+     **********************************************************************/
     HangmanFrame(){
         //creates menu items
         menuBar = new JMenuBar();
@@ -38,6 +45,10 @@ public class HangmanFrame extends JFrame implements ActionListener {
         hangFrame.setLocationRelativeTo(null);
     }
 
+    /**********************************************************************
+     *
+     * @param e the event to be processed
+     **********************************************************************/
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == library){

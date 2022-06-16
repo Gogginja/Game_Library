@@ -3,6 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**********************************************************************
+ * JPanel for Hangman
+ * @author Lucas Myers
+ * @version Spring 2022
+ **********************************************************************/
 public class HangmanPanel extends JPanel {
 
     //declare jbuttons and text fields
@@ -11,6 +16,10 @@ public class HangmanPanel extends JPanel {
     private JButton guessButton;
     private JTextField guessField;
 
+    /**********************************************************************
+     * Constructor that sets buttons, labels, and text fields. Adds an
+     * action listener.
+     **********************************************************************/
     public HangmanPanel() {
 
         game = new Hangman();
@@ -49,6 +58,10 @@ public class HangmanPanel extends JPanel {
 
     }
 
+    /**********************************************************************
+     * Method that initializes the labels and text fields and resets
+     * the hangman game.
+     **********************************************************************/
     private void newGame() {
         game.newGame();
         lblProgress.setText(game.displayProcess());
@@ -61,6 +74,10 @@ public class HangmanPanel extends JPanel {
 
     private class ButtonListener implements ActionListener {
 
+        /**********************************************************************
+         *
+         * @param event the event to be processed
+         **********************************************************************/
         public void actionPerformed(ActionEvent event) {
 
             if (event.getSource() == guessButton) {
