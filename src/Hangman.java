@@ -53,30 +53,12 @@ public class Hangman {
         return String.join(", ", guessedLetters);
     }
 
-
     /**********************************************************************
      * Getter method that returns the word the player is trying to guess.
      * @return the word the player is trying to guess
      **********************************************************************/
     public String getChosenWord() {
         return chosenWord;
-    }
-
-    /**********************************************************************
-     * Getter method that returns the maximum number of errors allowed.
-     * @return the maximum number of errors allowed
-     **********************************************************************/
-    public int getNUM_ERRORS() {
-        return NUM_ERRORS;
-    }
-
-    /**********************************************************************
-     * Getter method that returns the letters of the word the player is
-     * guessing for.
-     * @return the letters of the word the player is guessing
-     **********************************************************************/
-    public static char[] getChosenWordLetters() {
-        return chosenWordLetters;
     }
 
     /**********************************************************************
@@ -99,32 +81,6 @@ public class Hangman {
         }
         guessedLetters.clear();
     }
-
-    /**********************************************************************
-     * Setter method that sets letters of the word the player is guessing.
-     * @param chosenWordLetters The letters of the word the player is
-     *                          guessing for
-     **********************************************************************/
-    public static void setChosenWordLetters(char[] chosenWordLetters) {
-        Hangman.chosenWordLetters = chosenWordLetters;
-    }
-
-    /**********************************************************************
-     * Setter method that sets the current number of errors.
-     * @param errorCounter The current number of errors
-     **********************************************************************/
-    public void setErrorCounter(int errorCounter) {
-        this.errorCounter = errorCounter;
-    }
-
-    /**********************************************************************
-     * Setter method that sets the letters the player has already guessed.
-     * @param guessedLetters The letters the player has already guessed
-     **********************************************************************/
-    public void setGuessedLetters(ArrayList<String> guessedLetters) {
-        this.guessedLetters = guessedLetters;
-    }
-
 
     /**********************************************************************
      * Constructor that initializes the game upon first launching.
@@ -225,12 +181,5 @@ public class Hangman {
             }
         }
         return builder.toString();
-    }
-
-    /**********************************************************************
-     * Method to start a game and open the GUI.
-     **********************************************************************/
-    public void startGame() {
-        new HangmanFrame();
     }
 }

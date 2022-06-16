@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.awt.*;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
