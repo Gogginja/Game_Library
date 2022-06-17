@@ -14,8 +14,15 @@ public class Hangman {
   /**
    * Bank of words the computer will choose from.
    */
-  //TODO: fill with words the computer could pick
-  public static final String[] WORD_BANK = {"TEST"};
+  public static final String[] WORD_BANK = {"ABSTRACT", "ASSERT", "BOOLEAN",
+      "BREAK", "BYTE", "CASE", "CATCH",
+      "CHAR", "CLASS", "CONST", "CONTINUE", "DEFAULT",
+      "DO", "DOUBLE", "ELSE", "ENUM", "EXTENDS",
+      "FINAL", "FINALLY", "FLOAT", "FOR", "GOTO", "IF", "IMPLEMENTS", "IMPORT", "INSTANCEOF",
+      "INT", "INTERFACE", "LONG", "NATIVE", "NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC",
+      "RETURN", "SHORT", "STATIC", "STRICTFP", "SUPER",
+      "SWITCH", "SYNCHRONIZED", "THIS", "THROW",
+      "THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE"};
 
   /**
    * Random number generator used to select a word.
@@ -133,7 +140,7 @@ public class Hangman {
    *
    * @param g Player's one character guess
    * @return 0 if guess is not part of the word. 1 if guess is part of the word.
-   *         2 if guess has been guessed already.
+   *     2 if guess has been guessed already.
    * @throws IllegalArgumentException when the input is not a single
    *                                  alphabetic character
    */
