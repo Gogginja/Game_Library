@@ -42,9 +42,6 @@ public class MemoryGUI extends JPanel implements ActionListener {
             //Game Library Button
             gamelibrary = new JButton("Game Library");
             gamelibrary.addActionListener(this);
-            /*
-             * ADD FUNCTIONALITY TO BRING BACK TO GAME LIBRARY HERE
-             */
 
             //Card Panel
             cardPanel = new JPanel();
@@ -54,16 +51,16 @@ public class MemoryGUI extends JPanel implements ActionListener {
             cardPanel.setVisible(true);
 
             //ImageIcon for cardback
-            cardback = new ImageIcon("src\\Images\\jello2.png");
+            cardback = new ImageIcon("src//Images//jello2.png");
             String[] pics = {
-                    "src\\Images\\angela.png",
-                    "src\\Images\\dwight.png",
-                    "src\\Images\\jim.png",
-                    "src\\Images\\kevin.png",
-                    "src\\Images\\michael.png",
-                    "src\\Images\\pam.png",
-                    "src\\Images\\stanley.png",
-                    "src\\Images\\toby.png"
+                    "src//Images//angela.png",
+                    "src//Images//dwight.png",
+                    "src//Images//jim.png",
+                    "src//Images//kevin.png",
+                    "src//Images//michael.png",
+                    "src//Images//pam.png",
+                    "src//Images//stanley.png",
+                    "src//Images//toby.png"
             };
             ArrayList<ImageIcon> cardface = new ArrayList<ImageIcon>();
 
