@@ -142,7 +142,7 @@ public class MemoryGUI extends JPanel implements ActionListener {
             matches++;
             if (this.isGameWon()) {
                 String[] responses = {"Play Again", "Game Library"};
-                ImageIcon icon = new ImageIcon("src\\Images\\img.png");
+                ImageIcon icon = new ImageIcon("src//Images//img.png");
                 int choice = JOptionPane.showOptionDialog(
                         null,
                         "You Win!",
@@ -158,8 +158,8 @@ public class MemoryGUI extends JPanel implements ActionListener {
                 }
                 //Back to Game Library
                 if (choice == JOptionPane.NO_OPTION) {
-                    System.exit(0);
-                }
+                  new LaunchPage();
+                  frame.dispose();                }
             }
         }
         //Mismatch
