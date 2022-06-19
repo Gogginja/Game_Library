@@ -15,6 +15,8 @@ public class LaunchPage extends JFrame implements ActionListener{
     ImageIcon hangmanI = new ImageIcon("src//icons//hangman.PNG");
     ImageIcon memoryI = new ImageIcon("src//icons//memorygame.PNG");
     ImageIcon tictactoeI = new ImageIcon("src//icons//tictactoe.PNG");
+    ImageIcon blockBreakerI = new ImageIcon("src//icons//blockbreakerImage.jfif");
+    ImageIcon pongI = new ImageIcon("src//icons//pongImage.png");
     //Buttons to access games
     JFrame frame = new JFrame();
 
@@ -22,8 +24,8 @@ public class LaunchPage extends JFrame implements ActionListener{
     JButton hangman = new JButton(hangmanI);
     JButton memory = new JButton(memoryI);
     JButton tictactoe = new JButton(tictactoeI);
-    JButton blockBreaker = new JButton("BlockBreaker");
-    JButton pong = new JButton("Pong");
+    JButton blockBreaker = new JButton(blockBreakerI);
+    JButton pong = new JButton(pongI);
 
 
 
@@ -38,15 +40,15 @@ public class LaunchPage extends JFrame implements ActionListener{
         memory.setFocusable(false);
         memory.addActionListener(this);
 
-        tictactoe.setBounds(10, 360, 204, 175);
+        tictactoe.setBounds(310, 400, 204, 175);
         tictactoe.setFocusable(false);
         tictactoe.addActionListener(this);
 
-        blockBreaker.setBounds(10, 240, 200, 40);
+        blockBreaker.setBounds(310, 253, 310, 146);
         blockBreaker.setFocusable(false);
         blockBreaker.addActionListener(this);
 
-        pong.setBounds(10, 300, 200, 40);
+        pong.setBounds(10, 238, 300, 280);
         pong.setFocusable(false);
         pong.addActionListener(this);
 

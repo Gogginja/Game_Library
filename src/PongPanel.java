@@ -145,7 +145,7 @@ public class PongPanel extends JPanel implements Runnable{
         double amountOfTicks = 60;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
-        do {
+        while (true) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -155,7 +155,7 @@ public class PongPanel extends JPanel implements Runnable{
                 repaint();
                 delta--;
             }
-        } while (true);
+        }
     }
 
     /**
@@ -171,7 +171,7 @@ public class PongPanel extends JPanel implements Runnable{
             paddle2.keyPressed(e);
 
             if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-                PongPlayMenu play = new PongPlayMenu();
+                new PongPlayMenu();
             }
         }
 

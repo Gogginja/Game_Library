@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PongFrame extends JFrame implements ActionListener {
-
-    PongPanel panel;
     JFrame pongFrame = new JFrame();
     JMenuBar menuBar;
     JMenu exitMenu;

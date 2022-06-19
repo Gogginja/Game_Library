@@ -5,14 +5,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-@SuppressWarnings("ALL")
+//@SuppressWarnings("ALL")
 public class BlockBreakerGamePlay extends JPanel implements KeyListener, ActionListener {
 
     private boolean isRunning = false;
     private int score = 0;
     private int toatlBricks = 21;
-    private Timer time;
-    private int delay = 8;
+    private final Timer time;
     private int playerX = 310;
 
     private int ballposX = 120;
@@ -31,6 +30,7 @@ public class BlockBreakerGamePlay extends JPanel implements KeyListener, ActionL
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+        int delay = 8;
         time = new Timer(delay, this);
         time.start();
     }
@@ -110,14 +110,13 @@ public class BlockBreakerGamePlay extends JPanel implements KeyListener, ActionL
 
                         Rectangle rect = new Rectangle(brickX,brickY, brickWidth, brickHeight);
                         Rectangle ballRect = new Rectangle(ballposX, ballposY, 20, 20);
-                        Rectangle brickRect = rect;
 
-                        if(ballRect.intersects(brickRect)){
+                        if(ballRect.intersects(rect)){
                             map.setBrickValue(0, i, j);
                             toatlBricks--;
                             score += 5;
 
-                            if(ballposX + 19 <= brickRect.x || ballposX + 1 >= brickRect.x + brickRect.width){
+                            if(ballposX + 19 <= rect.x || ballposX + 1 >= rect.x + rect.width){
                                 ballXdir = -ballXdir;
                             }else{
                                 ballYdir = -ballYdir;
