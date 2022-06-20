@@ -62,7 +62,7 @@ public class LaunchPage extends JFrame implements ActionListener{
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700,700);
-        frame.setLayout(null);
+        frame.setLayout(new GridLayout(3,2,50,50));
         frame.setVisible(true);
     }
 
