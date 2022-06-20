@@ -1,28 +1,43 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.Timer;
 
-public class MemoryGUI extends JPanel implements ActionListener {
+/**
+ * MemoryGame class: Runs the memory game.
+ *
+ * @author Lauren Inman
+ *
+ * @version Summer 2021
+ */
+public class MemoryGame extends JPanel implements ActionListener {
   public JToggleButton selectedCard;
   public JToggleButton b1;
   public JToggleButton b2;
-  private final Timer t;
+  private final Timer timer;
   private final JFrame frame;
   private final JLabel keepscore;
   private final JButton gamelibrary;
   public int matches;
   private int score;
 
-
-  /*****************************************************
-   *
-   * Method that sets up the board for game play
-   *
-   ****************************************************/
-  public MemoryGUI() {
+  /**
+   * Method that sets up the board for game play.
+   */
+  public MemoryGame() {
     //Frame
     frame = new JFrame();
     frame.setTitle("Memory Game");
@@ -71,7 +86,7 @@ public class MemoryGUI extends JPanel implements ActionListener {
     Collections.shuffle(cardface);
 
     //set up the timer
-    t = new Timer(500, new ActionListener() {
+    timer = new Timer(500, new ActionListener() {
       public void actionPerformed(ActionEvent ae) {
         checkCards();
         score++;
@@ -79,7 +94,7 @@ public class MemoryGUI extends JPanel implements ActionListener {
 
       }
     });
-    t.setRepeats(false);
+    timer.setRepeats(false);
 
     //Creates JButtons and adds to cardPanel
     for (int i = 0; i < 16; i++) {
@@ -101,38 +116,35 @@ public class MemoryGUI extends JPanel implements ActionListener {
   }
 
   @Override
-  public void actionPerformed(ActionEvent e){
-    if(e.getSource() == gamelibrary){
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == gamelibrary) {
       new LaunchPage();
       frame.dispose();
     }
   }
 
-  /************************************************
+  /**
+   * Method for taking a turn.
    *
-   * Method for taking a turn
-   *
-   ***********************************************/
+   */
   public void doTurn() {
-
+    //No card has been selected yet
     if (b1 == null && b2 == null) {
       b1 = selectedCard;
       b1.setSelected(true);
     }
-
+    //First card has been selected already
     if (b1 != null && b1 != selectedCard && b2 == null) {
       b2 = selectedCard;
       b2.setSelected(true);
-      t.start();
+      timer.start();
     }
   }
 
-  /****************************************************************
-   *
-   * Method for checking selected cards for match or mismatch
-   *
-   ****************************************************************/
-  public boolean checkCards() {
+  /**
+   * Method for checking selected cards for match or mismatch.
+   */
+  public void checkCards() {
     //Match
     if (b1.getSelectedIcon().toString().equals(b2.getSelectedIcon().toString())) {
       b1.setEnabled(false);
@@ -157,38 +169,29 @@ public class MemoryGUI extends JPanel implements ActionListener {
         //'Game Library' button
         if (choice == JOptionPane.NO_OPTION) {
           new LaunchPage();
-          frame.dispose();                }
+          frame.dispose();
+        }
       }
-      b1 = null;
-      b2 = null;
-      return true;
-    }
-    //Mismatch
-    else {
+    } else { //Mismatch
       b1.setSelected(false);
       b2.setSelected(false);
-      b1 = null;
-      b2 = null;
-      return false;
     }
-
+    b1 = null;
+    b2 = null;
   }
 
-  /****************************************************
+  /**
+   * Method that checks if the game has been won.
    *
-   * Method that checks if the game has been won
    * @return boolean
-   *
-   ***************************************************/
+   */
   public boolean isGameWon() {
     return matches == 8;
   }
 
-  /*******************************************************
-   *
-   * Method that sets the board up to play again
-   *
-   *******************************************************/
+  /**
+   * Method that sets the board up to play again.
+   */
   public void setPlayagain() {
     main(null);
   }
@@ -196,7 +199,7 @@ public class MemoryGUI extends JPanel implements ActionListener {
 
 
   public static void main(String[] args) {
-    new MemoryGUI();
+    new MemoryGame();
 
   }
 
