@@ -211,6 +211,20 @@ public class TicTacToeEngine implements ActionListener {
         }
         textField.setText("X WINS!!");
 
+        //JOption Pane for Game Over
+        String[] responses = {"Play Again", "Game Library"};
+        int choice = JOptionPane.showOptionDialog(frame,"X Wins!", "Game Over",
+            JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, responses, 0);
+        //Play Again
+        if (choice == JOptionPane.YES_OPTION) {
+            new TicTacToeEngine();
+            frame.dispose();
+        }
+        //Game Library
+        if (choice == JOptionPane.NO_OPTION) {
+            new LaunchPage();
+            frame.dispose();
+        }
     }
 
     /**
@@ -233,5 +247,20 @@ public class TicTacToeEngine implements ActionListener {
             buttons[i].setEnabled(false);
         }
         textField.setText("O WINS!!");
+
+        //JOption Pane for Game Over
+        String[] responses = {"Play Again", "Game Library"};
+        int choice = JOptionPane.showOptionDialog(frame,"O Wins!", "Game Over",
+            JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, responses, 0);
+        //Play Again
+        if (choice == JOptionPane.YES_OPTION) {
+            new TicTacToeEngine();
+            frame.dispose();
+        }
+        //Game Library
+        if (choice == JOptionPane.NO_OPTION) {
+            new LaunchPage();
+            frame.dispose();
+        }
     }
 }
