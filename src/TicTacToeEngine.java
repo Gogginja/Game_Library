@@ -213,8 +213,9 @@ public class TicTacToeEngine implements ActionListener {
 
         //JOption Pane for Game Over
         String[] responses = {"Play Again", "Game Library"};
+        ImageIcon iconx = new ImageIcon("src//Images//xwins.png");
         int choice = JOptionPane.showOptionDialog(frame,"X Wins!", "Game Over",
-            JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, responses, 0);
+            JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, iconx, responses, 0);
         //Play Again
         if (choice == JOptionPane.YES_OPTION) {
             new TicTacToeEngine();
@@ -250,8 +251,9 @@ public class TicTacToeEngine implements ActionListener {
 
         //JOption Pane for Game Over
         String[] responses = {"Play Again", "Game Library"};
+        ImageIcon icono = new ImageIcon("src//Images//owins.png");
         int choice = JOptionPane.showOptionDialog(frame,"O Wins!", "Game Over",
-            JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, responses, 0);
+            JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, icono, responses, 0);
         //Play Again
         if (choice == JOptionPane.YES_OPTION) {
             new TicTacToeEngine();
