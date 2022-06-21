@@ -15,8 +15,8 @@ public class LaunchPage extends JFrame implements ActionListener{
     ImageIcon hangmanI = new ImageIcon("src//icons//hangman.PNG");
     ImageIcon memoryI = new ImageIcon("src//icons//memorygame.PNG");
     ImageIcon tictactoeI = new ImageIcon("src//icons//tictactoe.PNG");
-    ImageIcon blockBreakerI = new ImageIcon("src//icons//blockbreakerImage.jfif");
-    ImageIcon pongI = new ImageIcon("src//icons//pongImage.png");
+    ImageIcon blockBreakerI = new ImageIcon("src//icons//blockbreaker.jpg");
+    ImageIcon pongI = new ImageIcon("src//icons//pong.png");
     //Buttons to access games
     JFrame frame = new JFrame();
 
