@@ -1,14 +1,7 @@
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 
 /**
@@ -41,6 +34,8 @@ public class HangmanPanel extends JPanel {
     add(new JLabel("Progress: "));
     lblProgress = new JLabel();
     lblProgress.setText(game.displayProcess());
+    lblProgress.setHorizontalAlignment(SwingConstants.CENTER);
+    lblProgress.setFont(new Font("SansSerifBold", Font.PLAIN, 50));
     add(lblProgress);
 
     guessField = new JTextField("Enter a letter");
@@ -53,11 +48,13 @@ public class HangmanPanel extends JPanel {
     lblErrors = new JLabel();
     String errors = String.valueOf(game.getErrorCounter());
     lblErrors.setText(errors);
+    lblErrors.setFont(new Font("SansSerif", Font.PLAIN, 20));
     add(lblErrors);
 
     add(new JLabel("Guessed Letters: "));
     lblGuessed = new JLabel();
     lblGuessed.setText(game.getGuessedLetters());
+    lblGuessed.setFont(new Font("SansSerif", Font.PLAIN, 20));
     add(lblGuessed);
 
 

@@ -40,11 +40,12 @@ public class HangmanFrame extends JFrame implements ActionListener {
     library.addActionListener(this);
     playAgain.addActionListener(this);
 
+    hangFrame.setSize(600,600);
     hangFrame.add(new HangmanPanel());
     hangFrame.setTitle("Hangman");
     hangFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     hangFrame.setResizable(false);
-    hangFrame.pack();
+    //hangFrame.pack();
     hangFrame.setVisible(true);
     hangFrame.setLocationRelativeTo(null);
   }
