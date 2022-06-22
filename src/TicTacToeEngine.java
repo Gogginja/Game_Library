@@ -14,11 +14,32 @@ public class TicTacToeEngine implements ActionListener {
     JLabel textField = new JLabel();
     JButton[] buttons = new JButton[9];
     boolean player1_turn;
+    JMenuBar menuBar;
+    JMenu exitMenu;
+    JMenu playMenu;
+    JMenuItem library;
+    JMenuItem playAgain;
 
     /**
      * Constructor for Tic-Tac-Toe
      */
     TicTacToeEngine(){
+        menuBar = new JMenuBar();
+
+        playMenu = new JMenu("Play Again");
+
+        playAgain = new JMenuItem("Play Again");
+
+
+
+
+        playMenu.add(playAgain);
+
+        menuBar.add(playMenu);
+        frame.setJMenuBar(menuBar);
+
+        playAgain.addActionListener(this);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 800);
         frame.getContentPane().setBackground(new Color(50,50,50));
@@ -60,6 +81,11 @@ public class TicTacToeEngine implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource() == playAgain){
+            frame.dispose();
+            new TicTacToeEngine();
+        }
 
         for(int i = 0; i < 9; i++){
             if(e.getSource() == buttons[i]){

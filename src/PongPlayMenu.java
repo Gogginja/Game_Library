@@ -63,6 +63,7 @@ public class PongPlayMenu extends JPanel implements ActionListener {
         }
 
         if(e.getSource() == exit){
+            prePlay.dispose();
             new LaunchPage();
         }
     }
